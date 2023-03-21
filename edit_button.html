@@ -17,9 +17,9 @@
 
     <form onsubmit="saveToLocalStorage(event)">
         <label>name</label>
-        <input type="text" name="username" required />
+        <input type="text" id="username" name="username" required />
         <label>email</label>
-        <input type="email" name="emailid" required />
+        <input type="email" id="emailid" name="emailid" required />
         <button>submit</button>
     </form>
 
@@ -57,21 +57,19 @@
                 localStorage.removeItem(myobj.email)
                 parentElement.removeChild(childElement)
             }
-            childElement.appendChild(deletebutton)
-            parentElement.appendChild(childElement)
-
-
-
-
+            
             var editbutton = document.createElement('input')
             editbutton.type = "button"
             editbutton.value = 'edit'
             editbutton.onclick = () => {
                 localStorage.removeItem(myobj.email)
                 parentElement.removeChild(childElement)
+                document.getElementById("username").value = myobj.name;
+                document.getElementById("emailid").value = myobj.email;
+
                 
             }
-
+            childElement.appendChild(deletebutton)
             childElement.appendChild(editbutton)
             parentElement.appendChild(childElement)
         }
